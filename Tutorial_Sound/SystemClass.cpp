@@ -34,7 +34,7 @@ bool SystemClass::Initialize()
 	m_hinstance = GetModuleHandle(NULL);
 
 	//윈도우 클래스 이름
-	m_applicationName = L"Tutorial Button";
+	m_applicationName = L"Tutorial Sound";
 
 	//윈도우 클래스 설정
 	wc.style = CS_OWNDC;
