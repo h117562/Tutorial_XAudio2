@@ -103,6 +103,7 @@ bool SoundClass::LoadSoundFile(const char* filePath)
 		return false;
 	}
 
+	//RIFF 청크를 읽어 파일 타입을 ㅓㅈ장
 	DWORD filetype;
 	ReadChunkData(hFile, &filetype, sizeof(DWORD), dwChunkPosition);
 	if (FAILED(result))
@@ -110,13 +111,14 @@ bool SoundClass::LoadSoundFile(const char* filePath)
 		return false;
 	}
 
+	//Wav 확장자가 아닐 경우 리턴
 	if (filetype != fourccWAVE)
 	{
 		return false;
 	}
 
 
-	//'fmt' 청크를 찾아 해당 내용을 WAVEFORMATEXTENSIBLE 구조체로 복사합니다.
+	//'fmt' 청크를 찾아 해당 내용을 WAVEFORMATEXTENSIBLE 구조체로 저장합니다.
 	result = FindChunk(hFile, fourccFMT, dwChunkSize, dwChunkPosition);
 	if (FAILED(result))
 	{
@@ -138,6 +140,7 @@ bool SoundClass::LoadSoundFile(const char* filePath)
 		return false;
 	}
 
+	//읽은 데이터를 XAudio 버퍼에 저장
 	BYTE* pDataBuffer = new BYTE[dwChunkSize];
 
 	result = ReadChunkData(hFile, pDataBuffer, dwChunkSize, dwChunkPosition);
@@ -151,6 +154,7 @@ bool SoundClass::LoadSoundFile(const char* filePath)
 	buffer.Flags = XAUDIO2_END_OF_STREAM; // tell the source voice not to expect any data after this buffer
 
 
+	//소스 보이스 생성
 	result = m_xAudio2->CreateSourceVoice(&m_xAudio2SourceVoice, (WAVEFORMATEX*)&wfx);
 	if (FAILED(result))
 	{
@@ -169,7 +173,8 @@ bool SoundClass::LoadSoundFile(const char* filePath)
 bool SoundClass::PlayAudio()
 {
 	HRESULT result;
-
+	
+	//오디오 재생
 	result = m_xAudio2SourceVoice->Start(0);
 	if (FAILED(result))
 	{
