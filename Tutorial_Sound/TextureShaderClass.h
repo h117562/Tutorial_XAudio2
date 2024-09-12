@@ -1,7 +1,10 @@
 #ifndef _TEXTURE_SHADER_CLASS_H_
 #define _TEXTURE_SHADER_CLASS_H_
 
-#include <d3dx11.h>
+#pragma comment(lib, "d3d11.lib")
+#pragma comment(lib, "d3dcompiler.lib")
+
+#include <d3d11.h>
 #include <d3dcompiler.h>
 #include <directxmath.h>
 #include <string>

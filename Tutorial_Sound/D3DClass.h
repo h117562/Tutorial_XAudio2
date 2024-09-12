@@ -1,14 +1,12 @@
 #ifndef _D3DCLASS_H_
 #define _D3DCLASS_H_
 
-
-#pragma comment(lib, "d3dx11.lib")
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "dxgi.lib")
-#pragma comment(lib, "d3dcompiler.lib")
 
 #include <d3d11.h>
 #include <directxmath.h>
+
 using namespace DirectX;
 
 class D3DClass

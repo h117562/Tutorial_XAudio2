@@ -47,7 +47,7 @@ bool SoundClass::InitializeXAudio(HWND hwnd)
 		return false;
 	}
 
-	//XAudio2 초기화
+	//XAudio2 생성
 	result = ::XAudio2Create(&m_xAudio2, 0, XAUDIO2_DEFAULT_PROCESSOR);
 	if (FAILED(result))
 	{

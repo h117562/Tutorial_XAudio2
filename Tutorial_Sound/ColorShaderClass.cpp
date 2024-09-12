@@ -33,8 +33,8 @@ bool ColorShaderClass::Initialize(ID3D11Device* pDevice, HWND hwnd)
 	vertexShaderBuffer = 0;
 	pixelShaderBuffer = 0;
 
-	result = D3DX11CompileFromFile(vsFilename, NULL, NULL, "main", "vs_4_0",
-		D3DCOMPILE_ENABLE_STRICTNESS, 0, NULL, &vertexShaderBuffer, &errorMessage, NULL);
+	result = D3DCompileFromFile(vsFilename, NULL, NULL, "main", "vs_4_0",
+		D3DCOMPILE_ENABLE_STRICTNESS, 0, &vertexShaderBuffer, &errorMessage);
 
 	if (FAILED(result))
 	{
@@ -52,8 +52,8 @@ bool ColorShaderClass::Initialize(ID3D11Device* pDevice, HWND hwnd)
 		return false;
 	}
 
-	result = D3DX11CompileFromFile(psFilename, NULL, NULL, "main", "ps_4_0",
-		D3DCOMPILE_ENABLE_STRICTNESS, 0, NULL, &pixelShaderBuffer, &errorMessage, NULL);
+	result = D3DCompileFromFile(psFilename, NULL, NULL, "main", "ps_4_0",
+		D3DCOMPILE_ENABLE_STRICTNESS, 0, &pixelShaderBuffer, &errorMessage);
 
 	if (FAILED(result))
 	{
@@ -172,8 +172,8 @@ bool ColorShaderClass::InitializeShader(ID3D11Device* device, HWND hwnd, CONST W
 	vertexShaderBuffer = 0;
 	pixelShaderBuffer = 0;
 
-	result = D3DX11CompileFromFile(vsFilename, NULL, NULL, "main", "vs_4_0", D3DCOMPILE_ENABLE_STRICTNESS, 0, NULL,
-		&vertexShaderBuffer, &errorMessage, NULL);
+	result = D3DCompileFromFile(vsFilename, NULL, NULL, "main", "vs_4_0", D3DCOMPILE_ENABLE_STRICTNESS, 0,
+		&vertexShaderBuffer, &errorMessage);
 	if (FAILED(result))
 	{
 		//파일로부터 컴파일에 실패했을 경우 오류 메시지를 파일로 생성
@@ -190,8 +190,8 @@ bool ColorShaderClass::InitializeShader(ID3D11Device* device, HWND hwnd, CONST W
 		return false;
 	}
 
-	result = D3DX11CompileFromFile(psFilename, NULL, NULL, "main", "ps_4_0", D3DCOMPILE_ENABLE_STRICTNESS, 0, NULL,
-		&pixelShaderBuffer, &errorMessage, NULL);
+	result = D3DCompileFromFile(psFilename, NULL, NULL, "main", "ps_4_0", D3DCOMPILE_ENABLE_STRICTNESS, 0,
+		&pixelShaderBuffer, &errorMessage);
 	if (FAILED(result))
 	{
 		//파일로부터 컴파일에 실패했을 경우 오류 메시지를 파일로 생성
